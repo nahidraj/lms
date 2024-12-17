@@ -11,19 +11,73 @@
     .navbar-nav {
       .nav-item {
         margin-left: 30px;
-
+        position: relative;
         .nav-link {
           color: $white;
           @include font(16px, 500);
 
           &:hover {
-            color: #009AFE;
+            color: #009AFE !important;
           }
         }
+
+
 
         .nav-link.active {
           color: #009AFE !important;
         }
+        .sub-menu {
+					width: 226px;
+					background-color: $white;
+					position: absolute;
+					top: calc(100% - -27px);
+					margin-top: 10px;
+					left: 0;
+					z-index: 999;
+					visibility: hidden;
+					opacity: 0;
+					transition: $transition;
+					box-shadow: 0px 10px 30px 0px rgba(137, 139, 142, 0.2);
+
+          &::before{
+            position: absolute;
+            top: -27px;
+            left: 0;
+            width: 100%;
+            height: 27px;
+            background: transparent;
+            content: "";
+            z-index: -1;
+          }
+
+					li {
+						a {
+							color: $black;
+							display: block;
+							background-color: transparent;
+							width: 100%;
+							padding: 8px 16px;
+							font-weight: 500;
+
+							&:hover {
+								background-color: $primary;
+								color: $white;
+							}
+						}
+					}
+				}
+
+				&:hover> {
+					.nav-link {
+						color: $white;
+					}
+
+					.sub-menu {
+						visibility: visible;
+						opacity: 1;
+						margin-top: 0px;
+					}
+				}
       }
     }
 
